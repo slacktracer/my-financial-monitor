@@ -2,6 +2,7 @@
   "author": "slacktracer",
   "dependencies": {
     "@types/node": "^16.10.3",
+    "cac": "^6.7.8",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "eslint": "^7.32.0",
@@ -11,6 +12,7 @@
     "husky": "^7.0.2",
     "lint-staged": "^11.1.2",
     "nodemon": "^2.0.13",
+    "pg": "^8.7.1",
     "prettier": "^2.3.2",
     "typescript": "^4.4.3"
   },
@@ -20,6 +22,7 @@
   "scripts": {
     "build": "rm -fr ./dist && tsc",
     "check-types": "tsc --noEmit --project ./tsconfig.json",
+    "cli": "node --require dotenv/config dist/cli.js",
     "format": "prettier src --write",
     "lint": "eslint src --ext .js,.ts --fix",
     "prepare": "husky install",
