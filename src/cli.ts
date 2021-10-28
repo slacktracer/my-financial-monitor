@@ -1,15 +1,15 @@
-import cac from "cac";
+#!/usr/bin/env node
+import "dotenv/config";
 
-import { commands as createAccountsCommands } from "./accounts/commands.js";
+import commander from "commander";
 
-const loadCommands = ({ cli }) => {
-  createAccountsCommands({ cli });
-};
+import { createCommands as createAccountsCommands } from "./accounts/cli/create-commands.js";
+import { createCommands as createBalancesCommands } from "./balances/cli/create-commands.js";
 
-const cli = cac("mfm");
+const program = new commander.Command();
 
-loadCommands({ cli });
+createAccountsCommands({ program });
+createBalancesCommands({ program });
 
-cli.help(() => void 0);
-cli.version("1.0.0");
-cli.parse();
+program.version("1.0.0");
+program.parse(process.argv);

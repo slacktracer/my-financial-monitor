@@ -1,4 +1,4 @@
-import { query } from "../database.js";
+import { query } from "../../database.js";
 
 export const readAccounts = async () => {
   const result = await query("SELECT * FROM ACCOUNT ORDER BY NAME;", []);

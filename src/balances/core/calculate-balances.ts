@@ -1,4 +1,4 @@
-import { query } from "../database.js";
+import { query } from "../../database.js";
 
 const balancesQuery = `DROP TABLE IF EXISTS BALANCE;
 
