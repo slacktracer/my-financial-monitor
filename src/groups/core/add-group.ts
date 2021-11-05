@@ -1,3 +1,3 @@
-export const addGroup = async () => {
-  return [{ "new group": true }];
+export const addGroup = async ({ data }) => {
+  return { ...data, groupID: 1 };
 };
