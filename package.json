@@ -20,7 +20,7 @@
   "main": "dist/main.js",
   "name": "my-financial-monitor",
   "scripts": {
-    "build": "rm -fr ./dist && tsc",
+    "build": "rm -fr ./dist && tsc && chmod u+x dist/cli.js",
     "check-types": "tsc --noEmit --project ./tsconfig.json",
     "cli": "node --require dotenv/config dist/cli.js",
     "format": "prettier src --write",
