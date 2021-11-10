@@ -5,8 +5,8 @@ export const createCategory = async ({ data }) => {
   const { groupID, name } = data;
 
   const {
-    rows: [addedCategory],
+    rows: [createdCategory],
   } = await query(createCategoryQuery, [groupID, name]);
 
-  return addedCategory;
+  return createdCategory;
 };

@@ -5,8 +5,8 @@ export const createAccount = async ({ data }) => {
   const { initialAmount, name } = data;
 
   const {
-    rows: [addedAccount],
+    rows: [createdAccount],
   } = await query(createAccountQuery, [initialAmount, name]);
 
-  return addedAccount;
+  return createdAccount;
 };

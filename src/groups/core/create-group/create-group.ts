@@ -5,8 +5,8 @@ export const createGroup = async ({ data }) => {
   const { name } = data;
 
   const {
-    rows: [addedGroup],
+    rows: [createGroup],
   } = await query(createGroupQuery, [name]);
 
-  return addedGroup;
+  return createGroup;
 };
