@@ -1,7 +1,19 @@
+import { createTransfer } from "../core/create-transfer/create-transfer.js";
 import { readTransfers } from "../core/read-transfers.js";
 
 export const createCommands = ({ program }) => {
   const transfersCommand = program.command("transfers");
+
+  transfersCommand
+    .command("create")
+    .requiredOption("-d, --data <data>")
+    .action(async (options) => {
+      const data = JSON.parse(options.data);
+
+      const transfer = JSON.stringify(await createTransfer({ data }), null, 2);
+
+      console.log(transfer);
+    });
 
   transfersCommand.command("read").action(async () => {
     const transfers = await readTransfers();
