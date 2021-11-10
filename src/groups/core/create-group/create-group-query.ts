@@ -1,4 +1,4 @@
-export const addGroupQuery = `
+export const createGroupQuery = `
 INSERT INTO
     PUBLIC.GROUP (GROUP_ID, NAME)
 VALUES

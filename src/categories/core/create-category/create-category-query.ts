@@ -1,4 +1,4 @@
-export const addCategoryQuery = `
+export const createCategoryQuery = `
 INSERT INTO
   CATEGORY (CATEGORY_ID, GROUP_ID, NAME)
 VALUES

@@ -1,17 +1,17 @@
-import { addCategory } from "../core/add-category/add-category.js";
+import { createCategory } from "../core/create-category/create-category.js";
 import { readCategories } from "../core/read-categories.js";
 
 export const createCommands = ({ program }) => {
   const categoriesCommand = program.command("categories");
 
   categoriesCommand
-    .command("add")
+    .command("create")
     .requiredOption("-d, --data <data>")
     .action(async (options) => {
-      // dist/cli.js categories add -d '{ "groupID": "an existing group id", "name": "some category name" }'
+      // dist/cli.js categories create -d '{ "groupID": "an existing group id", "name": "some category name" }'
       const data = JSON.parse(options.data);
 
-      const category = JSON.stringify(await addCategory({ data }), null, 2);
+      const category = JSON.stringify(await createCategory({ data }), null, 2);
 
       console.log(category);
     });

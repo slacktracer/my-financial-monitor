@@ -1,4 +1,4 @@
-export const addAccountQuery = `
+export const createAccountQuery = `
 INSERT INTO
   ACCOUNT (ACCOUNT_ID, INITIAL_AMOUNT, NAME)
 VALUES
