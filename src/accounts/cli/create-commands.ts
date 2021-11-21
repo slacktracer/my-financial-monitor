@@ -1,4 +1,5 @@
 import { createAccount } from "../core/create-account/create-account.js";
+import { readAccount } from "../core/read-account.js";
 import { readAccounts } from "../core/read-accounts.js";
 
 export const createCommands = ({ program }) => {
@@ -15,11 +16,24 @@ export const createCommands = ({ program }) => {
       console.log(category);
     });
 
-  accountsCommand.command("read").action(async () => {
-    const accounts = await readAccounts();
+  accountsCommand
+    .command("read")
+    .option("--id <id>")
+    .action(async (options) => {
+      const { id } = options;
 
-    console.table(accounts);
-  });
+      if (id) {
+        const account = await readAccount({ id });
+
+        console.log(account);
+
+        return;
+      }
+
+      const accounts = await readAccounts();
+
+      console.table(accounts);
+    });
 
   return accountsCommand;
 };
