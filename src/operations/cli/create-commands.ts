@@ -1,6 +1,6 @@
 import { createOperation } from "../core/create-operation/create-operation.js";
 import { readOperations } from "../core/read-operations.js";
-import { updateOperation } from "../core/update-operation.js";
+import { updateOperation } from "../core/update-operation/update-operation.js";
 
 export const createCommands = ({ program }) => {
   const operationsCommand = program.command("operations");
@@ -32,9 +32,13 @@ export const createCommands = ({ program }) => {
     .action(async (options) => {
       const data = JSON.parse(options.data);
 
-      const operation = await updateOperation({ data });
+      const operation = JSON.stringify(
+        await updateOperation({ data }),
+        null,
+        2,
+      );
 
-      console.table(operation);
+      console.log(operation);
     });
 
   return operationsCommand;

@@ -3,6 +3,7 @@
   "dependencies": {
     "@types/node": "^16.10.3",
     "commander": "^8.3.0",
+    "copyfiles": "^2.4.1",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "eslint": "^7.32.0",
@@ -13,6 +14,7 @@
     "lint-staged": "^11.1.2",
     "nodemon": "^2.0.13",
     "pg": "^8.7.1",
+    "pg-promise": "^10.11.1",
     "prettier": "^2.3.2",
     "typescript": "^4.4.3"
   },
@@ -25,8 +27,9 @@
     "cli": "node --require dotenv/config dist/cli.js",
     "format": "prettier src --write",
     "lint": "eslint src --ext .js,.ts --fix",
-    "prepare": "husky install",
     "n": "nodemon",
+    "postbuild": "copyfiles --up 1 src/**/*.sql dist/",
+    "prepare": "husky install",
     "start": "node --require dotenv/config dist/main.js",
     "test": "jest"
   },
