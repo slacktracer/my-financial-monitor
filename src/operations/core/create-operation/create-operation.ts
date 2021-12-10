@@ -1,5 +1,9 @@
-import { query } from "../../../database.js";
-import { createOperationQuery } from "./create-operation-query.js";
+import { db, loadQuery } from "../../../common/database.js";
+
+const createOperationQuery = loadQuery({
+  base: import.meta.url,
+  url: "./create-operation.sql",
+});
 
 export const createOperation = async ({ data }) => {
   const {
@@ -13,9 +17,7 @@ export const createOperation = async ({ data }) => {
     unit_count,
   } = data;
 
-  const {
-    rows: [createdOperation],
-  } = await query(createOperationQuery, [
+  const createdOperation = db.one(createOperationQuery, {
     account_id,
     amount,
     amount_per_unit,
@@ -24,7 +26,7 @@ export const createOperation = async ({ data }) => {
     group_id,
     type,
     unit_count,
-  ]);
+  });
 
   return createdOperation;
 };

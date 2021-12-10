@@ -1,6 +1,6 @@
 UPDATE
   operation
 SET
-  ${sets:raw}
+  ${ sets:raw }
 WHERE
-  OPERATION_ID = ${operation_id} returning *;
+  OPERATION_ID = ${ operation_id } returning *;
