@@ -1,5 +1,5 @@
 import { createCategory } from "../core/create-category/create-category.js";
-import { readCategories } from "../core/read-categories.js";
+import { readCategories } from "../core/read-categories/read-categories.js";
 
 export const createCommands = ({ program }) => {
   const categoriesCommand = program.command("categories");

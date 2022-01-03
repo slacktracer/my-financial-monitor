@@ -1,5 +1,5 @@
 import { createTransfer } from "../core/create-transfer/create-transfer.js";
-import { readTransfers } from "../core/read-transfers.js";
+import { readTransfers } from "../core/read-transfers/read-transfers.js";
 
 export const createCommands = ({ program }) => {
   const transfersCommand = program.command("transfers");

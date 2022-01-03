@@ -1,5 +1,5 @@
 import { createGroup } from "../core/create-group/create-group.js";
-import { readGroups } from "../core/read-groups.js";
+import { readGroups } from "../core/read-groups/read-groups.js";
 
 export const createCommands = ({ program }) => {
   const groupsCommand = program.command("groups");
