@@ -1,6 +1,6 @@
 import { createAccount } from "../core/create-account/create-account.js";
-import { readAccount } from "../core/read-account.js";
-import { readAccounts } from "../core/read-accounts.js";
+import { readAccount } from "../core/read-accounts/read-account.js";
+import { readAccounts } from "../core/read-accounts/read-accounts.js";
 
 export const createCommands = ({ program }) => {
   const accountsCommand = program.command("accounts");

@@ -1,0 +1,6 @@
+SELECT
+  *
+FROM
+  ACCOUNT
+ORDER BY
+  NAME;
