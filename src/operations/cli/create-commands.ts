@@ -1,5 +1,5 @@
 import { createOperation } from "../core/create-operation/create-operation.js";
-import { readOperations } from "../core/read-operations.js";
+import { readOperations } from "../core/read-operations/read-operations.js";
 import { updateOperation } from "../core/update-operation/update-operation.js";
 
 export const createCommands = ({ program }) => {
