@@ -1,12 +1,20 @@
-import { query } from "../../../database.js";
-import { createTransferQuery } from "./create-transfer-query.js";
+import { db, loadQuery } from "../../../common/database.js";
+
+const createTransferQuery = loadQuery({
+  base: import.meta.url,
+  url: "./create-transfer.sql",
+});
 
 export const createTransfer = async ({ data }) => {
   const { amount, fromAccountID, toAccountID } = data;
 
-  const {
-    rows: [createdTransfer],
-  } = await query(createTransferQuery, [amount, fromAccountID, toAccountID]);
+  console.log(amount, fromAccountID, toAccountID);
+
+  const createdTransfer = db.one(createTransferQuery, {
+    amount,
+    fromAccountID,
+    toAccountID,
+  });
 
   return createdTransfer;
 };

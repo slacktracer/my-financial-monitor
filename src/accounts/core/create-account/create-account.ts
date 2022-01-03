@@ -1,12 +1,14 @@
-import { query } from "../../../database.js";
-import { createAccountQuery } from "./create-account-query.js";
+import { db, loadQuery } from "../../../common/database.js";
+
+const createAccountQuery = loadQuery({
+  base: import.meta.url,
+  url: "./create-account.sql",
+});
 
 export const createAccount = async ({ data }) => {
   const { initialAmount, name } = data;
 
-  const {
-    rows: [createdAccount],
-  } = await query(createAccountQuery, [initialAmount, name]);
+  const createdAccount = db.one(createAccountQuery, { initialAmount, name });
 
   return createdAccount;
 };

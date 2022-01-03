@@ -1,12 +1,14 @@
-import { query } from "../../../database.js";
-import { createGroupQuery } from "./create-group-query.js";
+import { db, loadQuery } from "../../../common/database.js";
+
+const createGroupQuery = loadQuery({
+  base: import.meta.url,
+  url: "./create-group.sql",
+});
 
 export const createGroup = async ({ data }) => {
   const { name } = data;
 
-  const {
-    rows: [createGroup],
-  } = await query(createGroupQuery, [name]);
+  const createdGroup = db.one(createGroupQuery, { name });
 
-  return createGroup;
+  return createdGroup;
 };
