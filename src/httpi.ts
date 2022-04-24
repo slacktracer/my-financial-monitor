@@ -1,5 +1,8 @@
-import { createRoutes as createAccountRoutes } from "./accounts/httpi/create-routes.js";
+import { createRouter as createAccountsRouter } from "./accounts/httpi/create-router.js";
+import { createExpressApplication } from "./common/create-express-application.js";
 
-export const createHTTPInterface = ({ application }) => {
-  createAccountRoutes({ application });
-};
+const expressApplication = await createExpressApplication();
+
+const accountsRouter = createAccountsRouter();
+
+expressApplication.use("/accounts", accountsRouter);
