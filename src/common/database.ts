@@ -6,4 +6,4 @@ const options = process.env.LOCAL === "yes" ? { ssl: true } : {};
 
 export const db = pgp(options);
 
-export { loadQuery } from "./loadQuery.js";
+export { loadQuery } from "./load-query.js";
