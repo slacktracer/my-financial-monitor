@@ -1,5 +1,5 @@
 {
-  "exec": "npm run build && npm start",
+  "exec": "npm run build && npm run x",
   "ext": "js,json,ts",
   "ignore": ["dist"]
 }

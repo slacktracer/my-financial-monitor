@@ -22,15 +22,15 @@
   "main": "dist/main.js",
   "name": "my-financial-monitor",
   "scripts": {
-    "build": "rm -fr ./dist && tsc && chmod u+x dist/cli.js",
+    "build": "rm -fr ./dist && npm ci && tsc && chmod u+x dist/cli.js",
     "check-types": "tsc --noEmit --project ./tsconfig.json",
     "cli": "node --require dotenv/config dist/cli.js",
     "format": "prettier src --write",
     "lint": "eslint src --ext .js,.ts --fix",
-    "n": "nodemon",
     "postbuild": "copyfiles --up 1 src/**/*.sql dist/",
     "prepare": "husky install",
-    "start": "node --require dotenv/config dist/main.js",
+    "x": "node --require dotenv/config dist/main.js",
+    "start": "nodemon",
     "test": "jest"
   },
   "type": "module",
