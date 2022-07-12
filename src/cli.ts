@@ -9,6 +9,7 @@ import { createCommands as createCategoriesCommands } from "./categories/cli/cre
 import { createCommands as createGroupsCommands } from "./groups/cli/create-commands.js";
 import { createCommands as createOperationsCommands } from "./operations/cli/create-commands.js";
 import { createCommands as createTransfersCommands } from "./transfers/cli/create-commands.js";
+import { createCommands as createUsersCommands } from "./users/cli/create-commands.js";
 
 const program = new commander.Command();
 
@@ -18,6 +19,7 @@ createCategoriesCommands({ program });
 createGroupsCommands({ program });
 createOperationsCommands({ program });
 createTransfersCommands({ program });
+createUsersCommands({ program });
 
 program.version("1.0.0");
 program.parse(process.argv);
