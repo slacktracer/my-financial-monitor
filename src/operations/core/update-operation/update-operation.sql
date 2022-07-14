@@ -3,4 +3,6 @@ UPDATE
 SET
   ${ sets:raw }
 WHERE
-  OPERATION_ID = ${ operation_id } returning *;
+  OPERATION_ID = ${ operation_id }
+RETURNING
+  *;

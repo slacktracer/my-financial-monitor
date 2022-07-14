@@ -23,7 +23,9 @@ VALUES
     GEN_RANDOM_UUID(),
     ${ type },
     ${ unit_count }
-  ) RETURNING ACCOUNT_ID,
+  )
+RETURNING
+  ACCOUNT_ID,
   AMOUNT,
   AMOUNT_PER_UNIT,
   AT,

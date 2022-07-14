@@ -13,7 +13,9 @@ VALUES
     ${ fromAccountID },
     ${ toAccountID },
     GEN_RANDOM_UUID()
-  ) RETURNING AMOUNT,
+  )
+RETURNING
+  AMOUNT,
   AT,
   FROM_ACCOUNT_ID,
   TO_ACCOUNT_ID,
