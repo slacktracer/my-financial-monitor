@@ -19,8 +19,9 @@ export const createCommands = ({ program }) => {
   accountsCommand
     .command("read")
     .option("--id <id>")
+    .option("--user_id <id>")
     .action(async (options) => {
-      const { id } = options;
+      const { id, user_id } = options;
 
       if (id) {
         const account = await readAccount({ id });
@@ -30,7 +31,7 @@ export const createCommands = ({ program }) => {
         return;
       }
 
-      const accounts = await readAccounts();
+      const accounts = await readAccounts({ user_id });
 
       console.table(accounts);
     });

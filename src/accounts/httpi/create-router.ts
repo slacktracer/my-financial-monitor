@@ -7,7 +7,9 @@ export const createRouter = () => {
   const accountsRouter = express.Router();
 
   accountsRouter.get("/", async (request, response) => {
-    const accountsRouter = await readAccounts();
+    const { user_id } = request.session.user;
+
+    const accountsRouter = await readAccounts({ user_id });
 
     response.json(accountsRouter);
   });
