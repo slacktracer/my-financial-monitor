@@ -10,7 +10,9 @@ export const createRouter = () => {
 
     const user = await login({ password, username });
 
-    request.session.user = user;
+    if (user !== false) {
+      request.session.user = user;
+    }
 
     response.json(user);
   });
