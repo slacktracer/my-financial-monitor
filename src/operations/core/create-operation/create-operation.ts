@@ -1,4 +1,4 @@
-import { db, loadQuery } from "../../../common/database.js";
+import { db, loadQuery } from "../../../application/database.js";
 
 const createOperationQuery = loadQuery({
   base: import.meta.url,

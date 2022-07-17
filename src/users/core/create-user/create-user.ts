@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 
-import { db, loadQuery } from "../../../common/database.js";
+import { db, loadQuery } from "../../../application/database.js";
 
 const createUserQuery = loadQuery({
   base: import.meta.url,

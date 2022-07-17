@@ -1,10 +1,10 @@
 import expressSession from "express-session";
 
 import { createRouter as createAccountsRouter } from "./accounts/httpi/create-router.js";
-import { createRouter as createAuthenticationRouter } from "./common/authentication/httpi/create-router.js";
-import { isSessionSet } from "./common/authentication/httpi/middleware/is-session-set.js";
-import { createExpressApplication } from "./common/create-express-application.js";
-import { sessionStore } from "./common/session-store.js";
+import { createRouter as createAuthenticationRouter } from "./application/authentication/httpi/create-router.js";
+import { isSessionSet } from "./application/authentication/httpi/middleware/is-session-set.js";
+import { createExpressApplication } from "./application/create-express-application.js";
+import { sessionStore } from "./application/session-store.js";
 import { createRouter as createGroupsRouter } from "./groups/httpi/create-router.js";
 
 const expressApplication = await createExpressApplication();
