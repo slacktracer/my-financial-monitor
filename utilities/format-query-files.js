@@ -1,8 +1,8 @@
-import { promises as fs } from "fs";
+import { promises as fs } from "node:fs";
 import { globby } from "globby";
 import { format } from "sql-formatter";
 
-const paths = await globby(["src/**/*.sql"]);
+const paths = await globby(["../src/**/*.sql"]);
 
 const sqlFormatterOptions = {
   keywordCase: "upper",

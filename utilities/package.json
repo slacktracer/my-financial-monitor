@@ -1,0 +1,11 @@
+{
+  "author": "slacktracer",
+  "dependencies": {
+    "globby": "^13.1.2",
+    "sql-formatter": "^8.2.0"
+  },
+  "license": "MIT",
+  "name": "utilities",
+  "type": "module",
+  "version": "1.0.0"
+}
