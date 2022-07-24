@@ -35,6 +35,7 @@
     "dev": "nodemon --config nodemon.dev.json",
     "format": "prettier src --write",
     "lint": "eslint src --ext .js,.ts --fix",
+    "postbuild": "node utilities/format-query-files.js && node utilities/copy-query-files.js",
     "prepare": "husky install",
     "x": "node --require dotenv/config dist/main.js",
     "start": "nodemon",
