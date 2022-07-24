@@ -3,7 +3,7 @@ UPDATE
 SET
   ${ sets:raw }
 WHERE
-  USER_id = ${ user_id }
+  USER_ID = ${ user_id }
 RETURNING
   EMAIL,
   USER_ID,
