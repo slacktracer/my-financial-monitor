@@ -1,4 +1,6 @@
 import { createUser } from "../core/create-user/create-user.js";
+import { deleteUser } from "../core/delete-user/delete-user.js";
+import { readUser } from "../core/read-users/read-user.js";
 import { readUsers } from "../core/read-users/read-users.js";
 import { updateUser } from "../core/update-user/update-user.js";
 
@@ -16,11 +18,35 @@ export const createCommands = ({ program }) => {
       console.log(user);
     });
 
-  usersCommand.command("read").action(async () => {
-    const users = await readUsers();
+  usersCommand
+    .command("delete")
+    .requiredOption("--userID <id>")
+    .action(async (options) => {
+      const { userID } = options;
 
-    console.table(users);
-  });
+      await deleteUser({ userID });
+
+      console.log(`User ${userID} deleted.`);
+    });
+
+  usersCommand
+    .command("read")
+    .option("--id <id>")
+    .action(async (options) => {
+      const { userID } = options;
+
+      if (userID) {
+        const user = await readUser({ userID });
+
+        console.log(user);
+
+        return;
+      }
+
+      const users = await readUsers();
+
+      console.table(users);
+    });
 
   usersCommand
     .command("update")
