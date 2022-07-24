@@ -18,10 +18,12 @@
     "lint-staged": "^11.1.2",
     "nodemon": "^2.0.13",
     "pg": "^8.7.1",
+    "pg-mem": "^2.6.3",
     "pg-promise": "^10.11.1",
     "prettier": "^2.3.2",
     "redis": "^4.2.0",
-    "typescript": "^4.4.3"
+    "typescript": "^4.4.3",
+    "uuid": "^8.3.2"
   },
   "license": "MIT",
   "main": "dist/main.js",
@@ -30,13 +32,13 @@
     "build": "rm -fr ./dist && npm ci && tsc && chmod u+x dist/cli.js",
     "check-types": "tsc --noEmit --project ./tsconfig.json",
     "cli": "node --require dotenv/config dist/cli.js",
+    "dev": "nodemon --config nodemon.dev.json",
     "format": "prettier src --write",
     "lint": "eslint src --ext .js,.ts --fix",
-    "postbuild": "copyfiles --up 1 src/**/*.sql dist/",
     "prepare": "husky install",
     "x": "node --require dotenv/config dist/main.js",
     "start": "nodemon",
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest --setupFiles dotenv/config"
+    "test": "DOTENV_CONFIG_PATH=./.env.test NODE_OPTIONS=--experimental-vm-modules jest --config ./jest.config.json --setupFiles dotenv/config"
   },
   "type": "module",
   "version": "1.0.0"
