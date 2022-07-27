@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 
-import { db, loadQuery, pgp } from "../../../application/database.js";
+import { db, loadQuery } from "../../../application/database.js";
 
 const updateUserQuery = loadQuery({
   base: import.meta.url,
@@ -14,7 +14,7 @@ export const updateUser = async ({ data }) => {
 
   update.password = hashedPassword;
 
-  const sets = pgp.helpers.sets(update);
+  const sets = db.$config.pgp.helpers.sets(update);
 
   const updatedUser = await db.one(updateUserQuery, {
     user_id,

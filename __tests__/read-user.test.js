@@ -1,6 +1,5 @@
 import { db, kv } from "../dist/application/database.js";
-import { createUser } from "../dist/users/core/create-user/create-user.js";
-import { readUser } from "../dist/users/core/read-users/read-user.js";
+import { createUser, readUser } from "../dist/users/core/users.js";
 import { truncateTables } from "./utilities/truncate-tables.js";
 import { createTables } from "./utilities/create-tables.js";
 
@@ -26,14 +25,14 @@ describe("read user", () => {
 
     const data = { email, password, username };
 
-    const { user_id: userID } = await createUser({ data });
+    const { userID } = await createUser({ data });
 
-    const expectedReturnValue = expect.objectContaining({ email, username });
+    const expectedUser = expect.objectContaining({ email, username });
 
     // when
-    const returnValue = await readUser({ userID });
+    const user = await readUser({ userID });
 
     // then
-    expect(returnValue).toEqual(expectedReturnValue);
+    expect(user).toEqual(expectedUser);
   });
 });

@@ -39,7 +39,7 @@
     "prepare": "husky install",
     "x": "node --require dotenv/config dist/main.js",
     "start": "nodemon",
-    "test": "DOTENV_CONFIG_PATH=./.env.test NODE_OPTIONS=--experimental-vm-modules jest --config ./jest.config.json --setupFiles dotenv/config"
+    "test": "npm run build && DOTENV_CONFIG_PATH=./.env.test NODE_OPTIONS=--experimental-vm-modules jest --config ./jest.config.json --setupFiles dotenv/config"
   },
   "type": "module",
   "version": "1.0.0"

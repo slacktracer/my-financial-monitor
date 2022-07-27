@@ -1,6 +1,5 @@
 import { db, kv } from "../dist/application/database.js";
-import { createUser } from "../dist/users/core/create-user/create-user.js";
-import { readUsers } from "../dist/users/core/read-users/read-users.js";
+import { createUser, readUsers } from "../dist/users/core/users.js";
 import { truncateTables } from "./utilities/truncate-tables.js";
 import { createTables } from "./utilities/create-tables.js";
 

@@ -1,8 +1,10 @@
-import { createUser } from "../core/create-user/create-user.js";
-import { deleteUser } from "../core/delete-user/delete-user.js";
-import { readUser } from "../core/read-users/read-user.js";
-import { readUsers } from "../core/read-users/read-users.js";
-import { updateUser } from "../core/update-user/update-user.js";
+import {
+  createUser,
+  deleteUser,
+  readUser,
+  readUsers,
+  updateUser,
+} from "../core/users.js";
 
 export const createCommands = ({ program }) => {
   const usersCommand = program.command("users");

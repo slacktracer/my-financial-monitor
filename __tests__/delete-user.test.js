@@ -1,7 +1,5 @@
 import { db, kv } from "../dist/application/database.js";
-import { createUser } from "../dist/users/core/create-user/create-user.js";
-import { deleteUser } from "../dist/users/core/delete-user/delete-user.js";
-import { readUsers } from "../dist/users/core/read-users/read-users.js";
+import { createUser, deleteUser, readUsers } from "../dist/users/core/users.js";
 import { truncateTables } from "./utilities/truncate-tables.js";
 import { createTables } from "./utilities/create-tables.js";
 
@@ -27,12 +25,13 @@ describe("delete user", () => {
 
     const data = { email, password, username };
 
-    const { user_id: userID } = await createUser({ data });
+    const { userID } = await createUser({ data });
 
     const expectedUserCount = 0;
 
     // when
     await deleteUser({ userID });
+
     const actualUserCount = (await readUsers()).length;
 
     // then
