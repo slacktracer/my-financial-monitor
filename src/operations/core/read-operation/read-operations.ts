@@ -5,8 +5,8 @@ const readOperationsQuery = loadQuery({
   url: "./read-operations.sql",
 });
 
-export const readOperations = async () => {
-  const operations = await db.manyOrNone(readOperationsQuery);
+export const readOperations = async ({ userID }) => {
+  const operations = await db.manyOrNone(readOperationsQuery, { userID });
 
   return operations;
 };

@@ -1,8 +1,8 @@
 UPDATE
-  operation
+  OPERATION
 SET
   ${ sets:raw }
 WHERE
-  OPERATION_ID = ${ operation_id }
+  OPERATION_ID = ${ operationID }
 RETURNING
   *;

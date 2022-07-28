@@ -5,27 +5,28 @@ const createOperationQuery = loadQuery({
   url: "./create-operation.sql",
 });
 
-export const createOperation = async ({ data }) => {
+export const createOperation = async ({ data, userID }) => {
   const {
-    account_id,
+    accountID,
     amount,
     amount_per_unit,
-    category_id,
+    categoryID,
     comments,
-    group_id,
+    groupID,
     type,
     unit_count,
   } = data;
 
   const createdOperation = db.one(createOperationQuery, {
-    account_id,
+    accountID,
     amount,
     amount_per_unit,
-    category_id,
+    categoryID,
     comments,
-    group_id,
+    groupID,
     type,
     unit_count,
+    userID,
   });
 
   return createdOperation;

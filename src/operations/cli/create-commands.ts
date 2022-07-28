@@ -1,6 +1,10 @@
-import { createOperation } from "../core/create-operation/create-operation.js";
-import { readOperations } from "../core/read-operations/read-operations.js";
-import { updateOperation } from "../core/update-operation/update-operation.js";
+import {
+  createOperation,
+  deleteOperation,
+  readOperation,
+  readOperations,
+  updateOperation,
+} from "../core/operations.js";
 
 export const createCommands = ({ program }) => {
   const operationsCommand = program.command("operations");
@@ -8,11 +12,14 @@ export const createCommands = ({ program }) => {
   operationsCommand
     .command("create")
     .requiredOption("-d, --data <data>")
+    .requiredOption("--userID <id>")
     .action(async (options) => {
+      const { userID } = options;
+
       const data = JSON.parse(options.data);
 
       const operation = JSON.stringify(
-        await createOperation({ data }),
+        await createOperation({ data, userID }),
         null,
         2,
       );
@@ -20,15 +27,41 @@ export const createCommands = ({ program }) => {
       console.log(operation);
     });
 
-  operationsCommand.command("read").action(async () => {
-    const operations = await readOperations();
+  operationsCommand
+    .command("delete")
+    .requiredOption("--userID <id>")
+    .action(async (options) => {
+      const { operationID, userID } = options;
 
-    console.table(operations);
-  });
+      await deleteOperation({ operationID, userID });
+
+      console.log(`User ${userID} deleted.`);
+    });
+
+  operationsCommand
+    .command("read")
+    .option("--id <id>")
+    .requiredOption("--userID <id>")
+    .action(async (options) => {
+      const { operationID, userID } = options;
+
+      if (operationID) {
+        const operation = await readOperation({ operationID, userID });
+
+        console.log(operation);
+
+        return;
+      }
+
+      const operations = await readOperations({ userID });
+
+      console.table(operations);
+    });
 
   operationsCommand
     .command("update")
     .requiredOption("-d, --data <data>")
+    .requiredOption("--userID <id>")
     .action(async (options) => {
       const data = JSON.parse(options.data);
 

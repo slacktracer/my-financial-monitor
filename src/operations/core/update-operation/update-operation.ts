@@ -1,4 +1,4 @@
-import { db, loadQuery, pgp } from "../../../application/database.js";
+import { db, loadQuery } from "../../../application/database.js";
 
 const updateOperationQuery = loadQuery({
   base: import.meta.url,
@@ -6,12 +6,12 @@ const updateOperationQuery = loadQuery({
 });
 
 export const updateOperation = async ({ data }) => {
-  const { operation_id, ...update } = data;
+  const { operationID, ...update } = data;
 
-  const sets = pgp.helpers.sets(update);
+  const sets = db.$config.pgp.helpers.sets(update);
 
   const updatedOperation = await db.one(updateOperationQuery, {
-    operation_id,
+    operationID,
     sets,
   });
 

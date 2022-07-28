@@ -2,5 +2,7 @@ SELECT
   *
 FROM
   OPERATION
+WHERE
+  USER_ID = ${ userID }
 ORDER BY
   AT DESC;

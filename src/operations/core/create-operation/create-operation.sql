@@ -9,20 +9,22 @@ INSERT INTO
     GROUP_ID,
     OPERATION_ID,
     TYPE,
-    UNIT_COUNT
+    UNIT_COUNT,
+    USER_ID
   )
 VALUES
   (
-    ${ account_id },
+    ${ accountID },
     ${ amount },
-    ${ amount_per_unit },
+    ${ amountPerUnit },
     NOW(),
-    ${ category_id },
+    ${ categoryID },
     ${ comments },
-    ${ group_id },
+    ${ groupID },
     GEN_RANDOM_UUID(),
     ${ type },
-    ${ unit_count }
+    ${ unitCount },
+    ${ userID }
   )
 RETURNING
   ACCOUNT_ID,
@@ -34,4 +36,5 @@ RETURNING
   GROUP_ID,
   OPERATION_ID,
   TYPE,
-  UNIT_COUNT;
+  UNIT_COUNT,
+  USER_ID

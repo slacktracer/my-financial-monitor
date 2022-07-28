@@ -1,0 +1,7 @@
+SELECT
+  *
+FROM
+  OPERATION
+WHERE
+  OPERATION_ID = ${ accountID }
+  AND USER_ID = ${ userID };
