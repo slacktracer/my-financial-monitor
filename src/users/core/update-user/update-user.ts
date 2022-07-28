@@ -8,16 +8,17 @@ const updateUserQuery = loadQuery({
 });
 
 export const updateUser = async ({ data }) => {
-  const { user_id, password, ...update } = data;
+  const { userID, password, ...update } = data;
 
-  const hashedPassword = await bcrypt.hash(password, 10);
+  if (password !== undefined) {
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-  update.password = hashedPassword;
-
+    update.password = hashedPassword;
+  }
   const sets = db.$config.pgp.helpers.sets(update);
 
   const updatedUser = await db.one(updateUserQuery, {
-    user_id,
+    userID,
     sets,
   });
 
