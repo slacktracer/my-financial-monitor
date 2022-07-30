@@ -1,23 +1,39 @@
+import { DataType, newDb } from "pg-mem";
 import initPGPromise from "pg-promise";
 import { createClient } from "redis";
+import { v4 as uuid } from "uuid";
 
 import { transformColumnNames } from "./transform-column-names.js";
-import { loadInMemoryDatabase } from "./load-in-memory-database.js";
 
 const pgp = initPGPromise();
 
 const options = process.env.LOCAL === "yes" ? { ssl: true } : {};
 
+export let pgm;
+
+if (process.env.USE_MEMORY_DATABASE === "yes") {
+  pgm = await newDb();
+
+  pgm.public.registerFunction({
+    args: [],
+    implementation: () => uuid(),
+    name: "gen_random_uuid",
+    returns: DataType.uuid,
+  });
+}
+
 export const db =
   process.env.USE_MEMORY_DATABASE === "yes"
-    ? await loadInMemoryDatabase()
+    ? pgm.adapters.createPgPromise()
     : pgp(options);
 
 db.$config.options.receive = transformColumnNames;
 
 export { loadQuery } from "./load-query.js";
 
-const redisClient = createClient({ url: process.env.REDIS_CONNECTION_STRING });
+export const redisClient = createClient({
+  url: process.env.REDIS_CONNECTION_STRING,
+});
 
 await redisClient.connect().catch(console.error);
 
