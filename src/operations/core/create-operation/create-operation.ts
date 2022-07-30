@@ -9,23 +9,23 @@ export const createOperation = async ({ data, userID }) => {
   const {
     accountID,
     amount,
-    amount_per_unit,
+    amountPerUnit,
     categoryID,
     comments,
     groupID,
     type,
-    unit_count,
+    unitCount,
   } = data;
 
   const createdOperation = db.one(createOperationQuery, {
     accountID,
     amount,
-    amount_per_unit,
+    amountPerUnit,
     categoryID,
     comments,
     groupID,
     type,
-    unit_count,
+    unitCount,
     userID,
   });
 
