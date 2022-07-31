@@ -1,5 +1,7 @@
 export const snakeCase = ({ object }) => {
-  const keys = Object.keys(object);
+  const o = { ...object };
+
+  const keys = Object.keys(o);
 
   const camelCaseKeys = keys.filter((key) => /[a-z][A-Z]/.test(key));
 
@@ -9,10 +11,10 @@ export const snakeCase = ({ object }) => {
       (match) => `${match[0]}_${match[1]}`,
     );
 
-    object[snakeCaseKey.toLowerCase()] = object[key];
+    o[snakeCaseKey.toLowerCase()] = o[key];
 
-    delete object[key];
+    delete o[key];
   });
 
-  return object;
+  return o;
 };
