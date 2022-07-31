@@ -1,7 +1,7 @@
-import { db, kv } from "../dist/application/database.js";
-import { createUser, readUsers } from "../dist/users/core/users.js";
-import { truncateTables } from "./utilities/truncate-tables.js";
-import { createTables } from "./utilities/create-tables.js";
+import { db, kv } from "../../dist/application/database.js";
+import { createUser, readUsers } from "../../dist/users/core/users.js";
+import { truncateTables } from "../utilities/truncate-tables.js";
+import { createTables } from "../utilities/create-tables.js";
 
 describe("create user", () => {
   afterAll(async () => {
