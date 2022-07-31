@@ -1,12 +1,14 @@
 INSERT INTO
-  ACCOUNT (ACCOUNT_ID, INITIAL_AMOUNT, NAME)
+  ACCOUNT (ACCOUNT_ID, INITIAL_AMOUNT, NAME, USER_ID)
 VALUES
   (
     GEN_RANDOM_UUID(),
     ${ initialAmount },
-    ${ name }
+    ${ name },
+    ${ userID }
   )
 RETURNING
   ACCOUNT_ID,
   INITIAL_AMOUNT,
-  NAME;
+  NAME,
+  USER_ID

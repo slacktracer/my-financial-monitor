@@ -1,23 +1,24 @@
 import express from "express";
 
-import { readAccount } from "../core/read-accounts/read-account.js";
-import { readAccounts } from "../core/read-accounts/read-accounts.js";
+import { readAccount, readAccounts } from "../core/accounts.js";
 
 export const createRouter = () => {
   const accountsRouter = express.Router();
 
   accountsRouter.get("/", async (request, response) => {
-    const { user_id } = request.session.user;
+    const { userID } = request.session.user;
 
-    const accountsRouter = await readAccounts({ user_id });
+    const accountsRouter = await readAccounts({ userID });
 
     response.json(accountsRouter);
   });
 
-  accountsRouter.get("/:id", async (request, response) => {
-    const { id } = request.params;
+  accountsRouter.get("/:accountID", async (request, response) => {
+    const { userID } = request.session.user;
 
-    const account = await readAccount({ id });
+    const { accountID } = request.params;
+
+    const account = await readAccount({ accountID, userID });
 
     response.json(account);
   });

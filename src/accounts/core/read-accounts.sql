@@ -3,6 +3,6 @@ SELECT
 FROM
   ACCOUNT
 WHERE
-  USER_ID = ${ user_id }
+  USER_ID = ${ userID }
 ORDER BY
-  NAME;
+  NAME

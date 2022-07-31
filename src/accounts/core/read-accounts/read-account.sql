@@ -1,6 +1,0 @@
-SELECT
-  *
-FROM
-  ACCOUNT
-WHERE
-  ACCOUNT_ID = ${ accountID };

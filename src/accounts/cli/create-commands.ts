@@ -1,6 +1,4 @@
-import { createAccount } from "../core/create-account/create-account.js";
-import { readAccount } from "../core/read-accounts/read-account.js";
-import { readAccounts } from "../core/read-accounts/read-accounts.js";
+import { createAccount, readAccount, readAccounts } from "../core/accounts.js";
 
 export const createCommands = ({ program }) => {
   const accountsCommand = program.command("accounts");
@@ -11,27 +9,27 @@ export const createCommands = ({ program }) => {
     .action(async (options) => {
       const data = JSON.parse(options.data);
 
-      const category = JSON.stringify(await createAccount({ data }), null, 2);
+      const account = JSON.stringify(await createAccount({ data }), null, 2);
 
-      console.log(category);
+      console.log(account);
     });
 
   accountsCommand
     .command("read")
-    .option("--id <id>")
-    .option("--user_id <id>")
+    .option("--accountID <id>")
+    .requiredOption("--userID <id>")
     .action(async (options) => {
-      const { id, user_id } = options;
+      const { accountID, userID } = options;
 
-      if (id) {
-        const account = await readAccount({ id });
+      if (accountID) {
+        const account = await readAccount({ accountID, userID });
 
         console.log(account);
 
         return;
       }
 
-      const accounts = await readAccounts({ user_id });
+      const accounts = await readAccounts({ userID });
 
       console.table(accounts);
     });
