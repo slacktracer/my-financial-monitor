@@ -1,5 +1,5 @@
 {
-  "exec": "npm run build && npm test",
+  "exec": "(npm run build && npm test) || exit 1",
   "ext": "js,json,ts",
   "ignore": ["dist/*", "__tests__/*"]
 }
