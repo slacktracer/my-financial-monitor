@@ -5,8 +5,8 @@ const updateAccountQuery = loadQuery({
   url: "./update-account.sql",
 });
 
-export const updateAccount = async ({ data, userID }) => {
-  const { accountID, ...update } = data;
+export const updateAccount = async ({ accountID, data, userID }) => {
+  const { ...update } = data;
 
   const sets = db.$config.pgp.helpers.sets(update);
 

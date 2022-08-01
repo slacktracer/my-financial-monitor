@@ -53,7 +53,7 @@ describe("create account", () => {
     const expectedAccountCount = 1;
 
     // when
-    const createdAccount = await createAccount({ data: accountData });
+    const createdAccount = await createAccount({ data: accountData, userID });
     const actualAccountCount = (await readAccounts({ userID })).length;
 
     // then

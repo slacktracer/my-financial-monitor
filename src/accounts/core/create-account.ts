@@ -5,8 +5,8 @@ const createAccountQuery = loadQuery({
   url: "./create-account.sql",
 });
 
-export const createAccount = async ({ data }) => {
-  const { initialAmount, name, userID } = data;
+export const createAccount = async ({ data, userID }) => {
+  const { initialAmount, name } = data;
 
   const createdAccount = db.one(createAccountQuery, {
     initialAmount,

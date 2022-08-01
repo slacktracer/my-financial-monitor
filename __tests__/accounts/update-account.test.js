@@ -64,7 +64,8 @@ describe("update account", () => {
 
     // when
     const updatedAccount = await updateAccount({
-      data: { accountID, name: newAccountName },
+      accountID,
+      data: { name: newAccountName },
       userID,
     });
 
